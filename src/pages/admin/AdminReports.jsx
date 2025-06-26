@@ -9,7 +9,8 @@ import {
   Tooltip,
   Legend
 } from 'chart.js';
-import htmlDocx from 'html-docx-js/dist/html-docx';
+import { Document, Packer, Paragraph, Table, TableCell, TableRow, WidthType, AlignmentType, TextRun } from 'docx';
+import { saveAs } from 'file-saver';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -187,14 +188,171 @@ const AdminReports = () => {
                 🖨️ Print Report
               </button>
               <button
-                onClick={() => {
-                  const el = document.getElementById('admin-report-word-content');
-                  const html = el.innerHTML;
-                  const blob = htmlDocx.asBlob(html);
-                  const link = document.createElement('a');
-                  link.href = URL.createObjectURL(blob);
-                  link.download = 'admin-report.docx';
-                  link.click();
+                onClick={async () => {
+                  try {
+                    const doc = new Document({
+                      sections: [
+                        {
+                          properties: {},
+                          children: [
+                            new Paragraph({
+                              children: [
+                                new TextRun({
+                                  text: "Admin Report - Speak Fresh",
+                                  bold: true,
+                                  size: 28,
+                                }),
+                              ],
+                              alignment: AlignmentType.CENTER,
+                            }),
+                            new Paragraph({
+                              children: [
+                                new TextRun({
+                                  text: `Generated on: ${new Date().toLocaleDateString('vi-VN')}`,
+                                  size: 20,
+                                }),
+                              ],
+                              alignment: AlignmentType.CENTER,
+                            }),
+                            new Paragraph({
+                              children: [
+                                new TextRun({
+                                  text: "",
+                                }),
+                              ],
+                            }),
+                            new Paragraph({
+                              children: [
+                                new TextRun({
+                                  text: "Summary Statistics",
+                                  bold: true,
+                                  size: 24,
+                                }),
+                              ],
+                            }),
+                            new Table({
+                              width: {
+                                size: 100,
+                                type: WidthType.PERCENTAGE,
+                              },
+                              rows: [
+                                new TableRow({
+                                  children: [
+                                    new TableCell({
+                                      children: [new Paragraph("Metric")],
+                                      width: { size: 50, type: WidthType.PERCENTAGE },
+                                    }),
+                                    new TableCell({
+                                      children: [new Paragraph("Value")],
+                                      width: { size: 50, type: WidthType.PERCENTAGE },
+                                    }),
+                                  ],
+                                }),
+                                new TableRow({
+                                  children: [
+                                    new TableCell({
+                                      children: [new Paragraph("Total Revenue")],
+                                    }),
+                                    new TableCell({
+                                      children: [new Paragraph(mockStats.totalRevenue.toLocaleString() + "₫")],
+                                    }),
+                                  ],
+                                }),
+                                new TableRow({
+                                  children: [
+                                    new TableCell({
+                                      children: [new Paragraph("Total Orders")],
+                                    }),
+                                    new TableCell({
+                                      children: [new Paragraph(mockStats.totalOrders.toString())],
+                                    }),
+                                  ],
+                                }),
+                                new TableRow({
+                                  children: [
+                                    new TableCell({
+                                      children: [new Paragraph("Total Customers")],
+                                    }),
+                                    new TableCell({
+                                      children: [new Paragraph(mockStats.totalCustomers.toString())],
+                                    }),
+                                  ],
+                                }),
+                                new TableRow({
+                                  children: [
+                                    new TableCell({
+                                      children: [new Paragraph("Best Seller")],
+                                    }),
+                                    new TableCell({
+                                      children: [new Paragraph(mockStats.bestSeller)],
+                                    }),
+                                  ],
+                                }),
+                              ],
+                            }),
+                            new Paragraph({
+                              children: [
+                                new TextRun({
+                                  text: "",
+                                }),
+                              ],
+                            }),
+                            new Paragraph({
+                              children: [
+                                new TextRun({
+                                  text: "Top 5 Best-Selling Products",
+                                  bold: true,
+                                  size: 24,
+                                }),
+                              ],
+                            }),
+                            new Table({
+                              width: {
+                                size: 100,
+                                type: WidthType.PERCENTAGE,
+                              },
+                              rows: [
+                                new TableRow({
+                                  children: [
+                                    new TableCell({
+                                      children: [new Paragraph("Product")],
+                                    }),
+                                    new TableCell({
+                                      children: [new Paragraph("Sold")],
+                                    }),
+                                    new TableCell({
+                                      children: [new Paragraph("Revenue")],
+                                    }),
+                                  ],
+                                }),
+                                ...mockBestProducts.map(product => 
+                                  new TableRow({
+                                    children: [
+                                      new TableCell({
+                                        children: [new Paragraph(product.name)],
+                                      }),
+                                      new TableCell({
+                                        children: [new Paragraph(product.sold.toString())],
+                                      }),
+                                      new TableCell({
+                                        children: [new Paragraph(product.revenue.toLocaleString() + "₫")],
+                                      }),
+                                    ],
+                                  })
+                                ),
+                              ],
+                            }),
+                          ],
+                        },
+                      ],
+                    });
+
+                    const blob = await Packer.toBlob(doc);
+                    saveAs(blob, "admin-report.docx");
+                  } catch (error) {
+                    console.error('Error generating DOCX:', error);
+                    alert('Error generating Word document. Please try again.');
+                  }
                 }}
                 className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
               >
