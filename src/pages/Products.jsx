@@ -109,10 +109,12 @@ const Products = () => {
 
     if (loading) {
         return (
-            <div className="max-w-7xl mx-auto px-4 py-8">
-                <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto"></div>
-                    <p className="mt-4 text-gray-600">{t('messages.loading', { ns: 'pages' })}</p>
+            <div className="bg-gradient-to-b from-green-50 to-white min-h-screen py-8 pt-24">
+                <div className="max-w-7xl mx-auto px-4 flex items-center justify-center min-h-[60vh]">
+                    <div className="text-center">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto"></div>
+                        <p className="mt-4 text-gray-600">{t('messages.loading', { ns: 'pages' })}</p>
+                    </div>
                 </div>
             </div>
         );
@@ -120,15 +122,17 @@ const Products = () => {
 
     if (error) {
         return (
-            <div className="max-w-7xl mx-auto px-4 py-8">
-                <div className="text-center text-red-500">
-                    <p>{error}</p>
-                    <button
-                        onClick={fetchProducts}
-                        className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
-                    >
-                        {t('buttons.retry', { ns: 'common' })}
-                    </button>
+            <div className="bg-gradient-to-b from-green-50 to-white min-h-screen py-8 pt-24">
+                <div className="max-w-7xl mx-auto px-4 flex items-center justify-center min-h-[60vh]">
+                    <div className="text-center text-red-500">
+                        <p>{error}</p>
+                        <button
+                            onClick={fetchProducts}
+                            className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
+                        >
+                            {t('buttons.retry', { ns: 'common' })}
+                        </button>
+                    </div>
                 </div>
             </div>
         );

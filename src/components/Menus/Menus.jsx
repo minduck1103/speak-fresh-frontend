@@ -10,25 +10,25 @@ const Menus = () => {
   const fruits = [
     {
       id: 1,
-      name: "Táo đỏ tươi",
+      name: "FreshApple",
       price: "110.000/kg",
       image: apple
     },
     {
       id: 2,
-      name: "Cam tươi",
+      name: "Fresh Orange",
       price: "100.000/kg",
       image: orange
     },
     {
       id: 3,
-      name: "Bơ tươi",
+      name: "Fresh Avocado",
       price: "50.000/kg",
       image: avocado
     },
     {
       id: 4,
-      name: "Cherry tươi",
+      name: "Fresh Cherry",
       price: "280.000/kg",
       image: cherry
     }

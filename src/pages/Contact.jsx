@@ -250,7 +250,7 @@ const Contact = () => {
       >
         {/* Add Google Maps or other map service here */}
         <div className="w-full h-full flex items-center justify-center text-gray-500">
-          Bản đồ Google Maps sẽ được hiển thị ở đây
+          Google Maps
         </div>
       </motion.div>
     </div>
