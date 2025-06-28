@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { FadeUp, FadeLeft } from "../../utility/animation";
 
 const Banner1 = () => {
@@ -28,14 +29,16 @@ const Banner1 = () => {
             >
               {t('home.banners.fresh_daily_desc', { ns: 'pages' })}
             </motion.p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-red-500 text-white px-6 py-3 rounded-full flex items-center hover:bg-red-600"
-            >
-              <span className="mr-2">🎁</span>
-              {t('home.banners.explore_now', { ns: 'pages' })}
-            </motion.button>
+            <Link to="/about">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-red-500 text-white px-6 py-3 rounded-full flex items-center hover:bg-red-600"
+              >
+                <span className="mr-2">🎁</span>
+                {t('home.banners.explore_now', { ns: 'pages' })}
+              </motion.button>
+            </Link>
           </motion.div>
           <motion.div
             variants={FadeUp(0.5)}

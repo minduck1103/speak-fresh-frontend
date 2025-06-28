@@ -174,7 +174,9 @@ const Login = () => {
                     <div className="bg-white rounded-lg shadow-lg p-6 max-w-xs w-full text-center border border-green-200">
                         <div className="text-green-600 text-2xl mb-2">✅</div>
                         <div className="mb-2 font-semibold">{t('messages.login_success', { ns: 'pages' })}</div>
-                        <div dangerouslySetInnerHTML={{ __html: t('messages.login_as', { ns: 'pages', role: roleToLabel[role] || role }) }}></div>
+                        {role !== 'user' && (
+                            <div dangerouslySetInnerHTML={{ __html: t('messages.login_as', { ns: 'pages', role: roleToLabel[role] || role }) }}></div>
+                        )}
                     </div>
                 </div>
             )}

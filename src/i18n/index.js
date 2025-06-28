@@ -24,7 +24,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'vi', // Default language
+    fallbackLng: 'en', // Default language
     debug: false,
 
     // Default namespace

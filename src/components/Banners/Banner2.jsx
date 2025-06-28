@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { FadeUp } from "../../utility/animation";
 
 const Banner2 = () => {
@@ -70,13 +71,15 @@ const Banner2 = () => {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-red-500 text-white px-8 py-3 rounded-full hover:bg-red-600 transition-colors duration-300"
-          >
-            {t('home.banners.learn_more', { ns: 'pages' })}
-          </motion.button>
+          <Link to="/contact">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-red-500 text-white px-8 py-3 rounded-full hover:bg-red-600 transition-colors duration-300"
+            >
+              {t('home.banners.learn_more', { ns: 'pages' })}
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </div>

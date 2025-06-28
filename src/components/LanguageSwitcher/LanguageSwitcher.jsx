@@ -7,17 +7,18 @@ const LanguageSwitcher = () => {
 
   const languages = [
     {
-      code: 'vi',
-      name: t('language.vietnamese'),
-      flag: '🇻🇳'
-    },
-    {
       code: 'en',
       name: t('language.english'),
       flag: '🇺🇸'
+    },
+    {
+      code: 'vi',
+      name: t('language.vietnamese'),
+      flag: '🇻🇳'
     }
   ];
 
+  // Default to English if no language is set or invalid language
   const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
 
   const handleLanguageChange = (languageCode) => {
@@ -33,7 +34,7 @@ const LanguageSwitcher = () => {
         title={t('language.switch_language')}
       >
         <span className="text-lg">{currentLanguage.flag}</span>
-        <span className="hidden sm:inline text-sm font-medium">{currentLanguage.code.toUpperCase()}</span>
+        <span className="hidden sm:inline text-sm font-medium">{currentLanguage.name}</span>
         <svg 
           className={`w-4 h-4 transition-transform ${showDropdown ? 'rotate-180' : ''}`}
           fill="none" 

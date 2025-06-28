@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FadeLeft, FadeRight } from "../../utility/animation";
 import { useTranslation } from 'react-i18next';
+import { Link } from "react-router-dom";
 import bannerBg from "../../assets/banner-bg.jpg";
 
 const Banner3 = () => {
@@ -37,14 +38,16 @@ const Banner3 = () => {
             <p className="text-gray-700 mb-8">
               {t('home.banners.fresh_today_description', { ns: 'pages' })}
             </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-red-500 text-white px-6 py-3 rounded-full flex items-center hover:bg-red-600 transition-colors"
-            >
-              <span className="mr-2">🛍️</span>
-              {t('buttons.order_now', { ns: 'common' })}
-            </motion.button>
+            <Link to="/products">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-red-500 text-white px-6 py-3 rounded-full flex items-center hover:bg-red-600 transition-colors"
+              >
+                <span className="mr-2">🛍️</span>
+                {t('buttons.order_now', { ns: 'common' })}
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
       </div>

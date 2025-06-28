@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { FadeUp, FadeRight } from "../../utility/animation";
 import fruitPlate from "../../assets/fruit-plate.png";
 
@@ -40,14 +41,16 @@ const Hero = () => {
                 </span>
               ))}
             </motion.p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-red-500 text-white px-8 py-3 rounded-full flex items-center hover:bg-red-600"
-            >
-              <span className="mr-2">🛍️</span>
-              {t('home.hero.shop_now', { ns: 'pages' })}
-            </motion.button>
+            <Link to="/products">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-red-500 text-white px-8 py-3 rounded-full flex items-center hover:bg-red-600"
+              >
+                <span className="mr-2">🛍️</span>
+                {t('home.hero.shop_now', { ns: 'pages' })}
+              </motion.button>
+            </Link>
           </motion.div>
           <motion.div
             variants={FadeRight(0.5)}
