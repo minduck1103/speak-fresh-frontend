@@ -29,7 +29,7 @@ const Banner1 = () => {
             >
               {t('home.banners.fresh_daily_desc', { ns: 'pages' })}
             </motion.p>
-            <Link to="/about">
+            <Link to="/about" className="no-underline">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

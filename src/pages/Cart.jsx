@@ -47,8 +47,8 @@ const Cart = () => {
       <div className="max-w-7xl mx-auto px-4 py-60">
         <div className="text-center py-16">
           <span className="text-6xl">🛒</span>
-          <h2 className="text-2xl font-semibold mt-4 mb-2">Giỏ hàng trống</h2>
-          <p className="text-gray-600 mb-4">Hãy thêm một số sản phẩm vào giỏ hàng của bạn</p>
+          <h2 className="text-2xl font-semibold mt-4 mb-2">{t('cart.empty', { ns: 'pages' })}</h2>
+          <p className="text-gray-600 mb-4">{t('cart.empty_message', { ns: 'pages' })}</p>
           <button
             onClick={() => navigate('/products')}
             className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors"
@@ -61,7 +61,7 @@ const Cart = () => {
   }
 
   return (      <div className="max-w-7xl mx-auto px-4 py-8 pt-32 mb-44 pt-[180px]" >
-      <h1 className="text-2xl font-bold mb-8 text-gray-800">Giỏ hàng</h1>
+      <h1 className="text-2xl font-bold mb-8 text-gray-800">{t('cart.title', { ns: 'pages' })}</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Cart Items */}
@@ -134,20 +134,20 @@ const Cart = () => {
         {/* Order Summary */}
         <div className="lg:col-span-1">
           <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-lg font-semibold mb-4">Tổng đơn hàng</h2>
+            <h2 className="text-lg font-semibold mb-4">{t('cart.total', { ns: 'pages' })}</h2>
 
             <div className="space-y-3 mb-6">
               <div className="flex justify-between text-gray-600">
-                <span>Tổng phụ:</span>
+                <span>{t('cart.subtotal', { ns: 'pages' })}:</span>
                 <span>{formatPrice(total)}</span>
               </div>
               <div className="flex justify-between text-gray-600">
-                <span>Phí vận chuyển:</span>
-                <span>Miễn phí</span>
+                <span>{t('cart.shipping', { ns: 'pages' })}:</span>
+                <span>{t('checkout.free', { ns: 'pages' })}</span>
               </div>
               <div className="border-t border-gray-100 pt-3">
                 <div className="flex justify-between font-semibold text-lg">
-                  <span>Tổng cộng:</span>
+                  <span>{t('cart.total', { ns: 'pages' })}:</span>
                   <span className="text-green-600">{formatPrice(total)}</span>
                 </div>
               </div>
@@ -157,14 +157,14 @@ const Cart = () => {
               onClick={() => navigate('/checkout')}
               className="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition-colors"
             >
-              Thanh toán
+              {t('cart.checkout', { ns: 'pages' })}
             </button>
 
             <button
               onClick={() => navigate('/products')}
               className="w-full mt-4 text-green-500 hover:text-green-600 transition-colors"
             >
-              ← Tiếp tục mua sắm
+              ← {t('cart.continue_shopping', { ns: 'pages' })}
             </button>
           </div>
         </div>

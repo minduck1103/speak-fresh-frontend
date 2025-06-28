@@ -41,7 +41,7 @@ const Hero = () => {
                 </span>
               ))}
             </motion.p>
-            <Link to="/products">
+            <Link to="/products" className="no-underline">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

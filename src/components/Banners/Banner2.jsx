@@ -71,7 +71,7 @@ const Banner2 = () => {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <Link to="/contact">
+          <Link to="/contact" className="no-underline">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

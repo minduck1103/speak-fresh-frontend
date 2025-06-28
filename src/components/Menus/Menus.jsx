@@ -44,7 +44,7 @@ const Menus = () => {
           viewport={{ once: true }}
           className="text-3xl font-bold mb-12"
         >
-          Nổi bật
+          Special
         </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {fruits.map((fruit, index) => (

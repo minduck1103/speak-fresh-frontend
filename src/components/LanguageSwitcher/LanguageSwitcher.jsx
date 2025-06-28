@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const LanguageSwitcher = () => {
@@ -34,7 +34,7 @@ const LanguageSwitcher = () => {
         title={t('language.switch_language')}
       >
         <span className="text-lg">{currentLanguage.flag}</span>
-        <span className="hidden sm:inline text-sm font-medium">{currentLanguage.name}</span>
+        <span className="hidden sm:inline text-sm font-medium">{currentLanguage.code.toUpperCase()}</span>
         <svg 
           className={`w-4 h-4 transition-transform ${showDropdown ? 'rotate-180' : ''}`}
           fill="none" 

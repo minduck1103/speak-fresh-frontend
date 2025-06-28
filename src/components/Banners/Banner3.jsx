@@ -38,7 +38,7 @@ const Banner3 = () => {
             <p className="text-gray-700 mb-8">
               {t('home.banners.fresh_today_description', { ns: 'pages' })}
             </p>
-            <Link to="/products">
+            <Link to="/products" className="no-underline">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
